@@ -14,7 +14,7 @@ module.exports = function DynamoDbRepository(awsRegion, tableName, hashKey, rang
         };
         params.Key[hashKey] = id;
         params.Key[rangeKey] = range;
-        this.docClient.getItem(params, function (err, result) {
+        docClient.getItem(params, function (err, result) {
             if (err) {
                 callback(err);
             } else {
@@ -28,7 +28,7 @@ module.exports = function DynamoDbRepository(awsRegion, tableName, hashKey, rang
             Key: {}
         };
         params.Key[hashKey] = id;
-        this.docClient.getItem(params, function (err, result) {
+        docClient.getItem(params, function (err, result) {
             if (err) {
                 callback(err);
             } else {
@@ -41,7 +41,7 @@ module.exports = function DynamoDbRepository(awsRegion, tableName, hashKey, rang
             TableName: tableName,
             Item: item
         };
-        this.docClient.putItem(params, callback);
+        docClient.putItem(params, callback);
     }
     function removeByIdFromDynamoDb(id, callback) {
         let params = {
@@ -49,7 +49,7 @@ module.exports = function DynamoDbRepository(awsRegion, tableName, hashKey, rang
             Key: {}
         };
         params.Key[hashKey] = id;
-        this.docClient.deleteItem(params, function (err) {
+        docClient.deleteItem(params, function (err) {
             if (err) {
                 callback(err);
             } else {
@@ -64,7 +64,7 @@ module.exports = function DynamoDbRepository(awsRegion, tableName, hashKey, rang
         };
         params.Key[hashKey] = id;
         params.Key[rangeKey] = range;
-        this.docClient.deleteItem(params, function (err) {
+        docClient.deleteItem(params, function (err) {
             if (err) {
                 callback(err);
             } else {
