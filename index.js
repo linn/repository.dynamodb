@@ -1,15 +1,14 @@
 "use strict";
 
-var aws = require('aws-sdk');
-var doc = require('dynamodb-doc');
-var config = require('../../config');
+let aws = require('aws-sdk');
+let doc = require('dynamodb-doc');
 
-aws.config.region = config.awsRegion;
-var docClient = new doc.DynamoDB();
 
-module.exports.CloudRepository = function CloudRepository(tableName, hashKey, rangeKey) {
+module.exports = function DynamoDbRepository(awsRegion, tableName, hashKey, rangeKey) {
+    aws.config.region = awsRegion;
+    let docClient = new doc.DynamoDB();
     function findByIdAndRangeKeyFromDynamoDb(id, range, callback) {
-        var params = {
+        let params = {
             TableName: tableName,
             Key: {}
         };
@@ -24,7 +23,7 @@ module.exports.CloudRepository = function CloudRepository(tableName, hashKey, ra
         });
     }
     function findByIdFromDynamoDb(id, callback) {
-        var params = {
+        let params = {
             TableName: tableName,
             Key: {}
         };
@@ -38,14 +37,14 @@ module.exports.CloudRepository = function CloudRepository(tableName, hashKey, ra
         });
     }
     function addOrReplaceToDynamoDb(item, callback) {
-        var params = {
+        let params = {
             TableName: tableName,
             Item: item
         };
         this.docClient.putItem(params, callback);
     }
     function removeByIdFromDynamoDb(id, callback) {
-        var params = {
+        let params = {
             TableName: tableName,
             Key: {}
         };
@@ -59,7 +58,7 @@ module.exports.CloudRepository = function CloudRepository(tableName, hashKey, ra
         })
     }
     function removeByIdAndRangeKeyFromDynamoDb(id, range, callback) {
-        var params = {
+        let params = {
             TableName: tableName,
             Key: {}
         };
