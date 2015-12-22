@@ -1,6 +1,6 @@
 {
   "name": "repository-dynamodb",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "A generic repository pattern for node.js apps accessing dynamodb",
   "author": "Barry John Williams <barry.williams@linn.co.uk>",
   "readme": "README.md",
