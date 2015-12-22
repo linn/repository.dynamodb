@@ -1,0 +1,18 @@
+{
+  "name": "linn-cloud-libs",
+  "version": "0.9.4",
+  "description": "A generic repository pattern for node.js apps accessing dynamodb",
+  "author": "Barry John Williams <barry.williams@linn.co.uk>",
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linn/repository.dynamodb.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.1.16",
+    "dynamodb-doc": "^1.0.0",
+    "node-uuid": "^1.4.2",
+    "winston": "^0.9.0"
+  }
+}
